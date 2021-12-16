@@ -1,0 +1,32 @@
+---
+# tasks file for log4j-scanner
+ - name: ensure unzip is installed
+   yum:
+      name: unzip
+      state: present
+
+ - name: copy check script
+   copy:
+      src: check_log4j.sh
+      dest: /tmp/check_log4j.sh
+      mode: 0755
+ - name: setup a local fact
+   block:
+   - name: fact mkdir
+     file:
+         state: directory
+         path: /etc/ansible/facts.d/
+         recurse: yes
+   - name: start populate the fact
+     copy:
+         content: |
+            [traces]
+            findings:
+         dest: /etc/ansible/facts.d/log4j_search.fact
+ 
+ - command: /tmp/check_log4j.sh 
+
+ - template:
+      src: report.j2
+      dest: /tmp/log4j_report.txt
+   delegate_to: localhost

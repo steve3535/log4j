@@ -1,0 +1,6 @@
+---
+- hosts: dmz
+  roles:
+  - role: log4j-scanner
+    FS: /
+

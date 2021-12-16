@@ -1,0 +1,4 @@
+---
+# defaults file for log4j-scanner
+FS: /
+GROUP: all
