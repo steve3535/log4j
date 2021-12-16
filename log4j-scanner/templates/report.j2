@@ -2,11 +2,9 @@
 
  
 
-{{ hostvars[h].ansible_facts.hostname }}
+{{ hostvars[h]['ansible_hostname'] }} 
 
 ------------------------------------
-
-{{ hostvars[h].ansible_facts.ansible_local.log4j_search.traces.archive }}
 
 {{ hostvars[h].ansible_facts.ansible_local.log4j_search.traces.findings }}
  

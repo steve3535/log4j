@@ -21,11 +21,10 @@
      copy:
          content: |
             [traces]
-            findings:
+            findings: " "
          dest: /etc/ansible/facts.d/log4j_search.fact
  
  - command: /tmp/check_log4j.sh 
-
  - template:
       src: report.j2
       dest: /tmp/log4j_report.txt
